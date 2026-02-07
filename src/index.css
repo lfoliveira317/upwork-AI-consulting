@@ -1,5 +1,3 @@
-@import "tailwindcss";
-
 :root {
   --color-bg: #fafafa;
   --color-surface: #ffffff;
@@ -49,7 +47,7 @@ body {
 
 /* ─── Grid pattern overlay ──────────────────────────── */
 .grid-pattern {
-  background-image: 
+  background-image:
     linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
   background-size: 60px 60px;
@@ -216,4 +214,9 @@ section {
   left: -5px;
   z-index: 0;
   user-select: none;
+}
+
+/* ─── Scroll margin for hash links ──────────────────── */
+.scroll-mt-5 {
+  scroll-margin-top: 5rem;
 }

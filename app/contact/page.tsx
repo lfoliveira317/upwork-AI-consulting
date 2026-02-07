@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
+import { Container, Row, Col, Card, Form } from "react-bootstrap";
 import { company } from "../data/siteData";
 import { PageHero } from "../components/UI";
 
@@ -9,7 +10,6 @@ export default function ContactPage() {
 
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    // Replace with your form handler (Formspree, Netlify Forms, etc.)
     setSubmitted(true);
   }
 
@@ -21,161 +21,229 @@ export default function ContactPage() {
         description="Tell us what you're working on. We'll get back to you within one business day."
       />
 
-      <div className="max-w-6xl mx-auto px-6 py-20">
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-16">
+      <Container className="py-5 my-4">
+        <Row className="g-5">
           {/* Form */}
-          <div className="lg:col-span-3">
+          <Col lg={7}>
             {submitted ? (
-              <div className="border border-green-200 bg-green-50 rounded-xl p-8">
-                <h3 className="text-lg font-semibold text-green-900 mb-2">
-                  Message sent
-                </h3>
-                <p className="text-sm text-green-700">
-                  Thanks for reaching out. We'll be in touch soon.
-                </p>
-              </div>
+              <Card className="border-0" style={{ borderRadius: 16, backgroundColor: "#f0fdf4" }}>
+                <Card.Body className="p-5 text-center">
+                  <div
+                    className="rounded-circle d-flex align-items-center justify-content-center mx-auto mb-4"
+                    style={{ width: 64, height: 64, backgroundColor: "#dcfce7" }}
+                  >
+                    <i className="bi bi-check-lg fs-2" style={{ color: "#16a34a" }} />
+                  </div>
+                  <h3 className="fw-bold mb-2" style={{ color: "#14532d", fontSize: "1.3rem" }}>
+                    Message sent
+                  </h3>
+                  <p style={{ color: "#166534", fontSize: "0.95rem" }}>
+                    Thanks for reaching out. We&apos;ll be in touch soon.
+                  </p>
+                </Card.Body>
+              </Card>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  <div>
-                    <label
-                      htmlFor="name"
-                      className="block text-sm font-medium text-gray-700 mb-2"
-                    >
-                      Name
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      required
-                      className="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-shadow"
-                      placeholder="Your name"
-                    />
-                  </div>
-                  <div>
-                    <label
-                      htmlFor="email"
-                      className="block text-sm font-medium text-gray-700 mb-2"
-                    >
-                      Email
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      required
-                      className="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-shadow"
-                      placeholder="you@company.com"
-                    />
-                  </div>
-                </div>
+              <Card className="border" style={{ borderRadius: 16 }}>
+                <Card.Body className="p-5">
+                  <h3 className="fw-bold mb-1" style={{ fontSize: "1.3rem", color: "#0f172a" }}>
+                    Send us a message
+                  </h3>
+                  <p className="mb-4" style={{ fontSize: "0.9rem", color: "#94a3b8" }}>
+                    Fill out the form below and we&apos;ll get back to you shortly.
+                  </p>
 
-                <div>
-                  <label
-                    htmlFor="company"
-                    className="block text-sm font-medium text-gray-700 mb-2"
-                  >
-                    Company{" "}
-                    <span className="text-gray-400 font-normal">(optional)</span>
-                  </label>
-                  <input
-                    type="text"
-                    id="company"
-                    name="company"
-                    className="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-shadow"
-                    placeholder="Company name"
-                  />
-                </div>
+                  <Form onSubmit={handleSubmit}>
+                    <Row className="g-3 mb-3">
+                      <Col sm={6}>
+                        <Form.Group>
+                          <Form.Label className="fw-medium" style={{ fontSize: "0.85rem", color: "#334155" }}>
+                            Name
+                          </Form.Label>
+                          <Form.Control
+                            type="text"
+                            name="name"
+                            required
+                            placeholder="Your name"
+                            style={{ borderRadius: 10, padding: "12px 16px", fontSize: "0.9rem" }}
+                          />
+                        </Form.Group>
+                      </Col>
+                      <Col sm={6}>
+                        <Form.Group>
+                          <Form.Label className="fw-medium" style={{ fontSize: "0.85rem", color: "#334155" }}>
+                            Email
+                          </Form.Label>
+                          <Form.Control
+                            type="email"
+                            name="email"
+                            required
+                            placeholder="you@company.com"
+                            style={{ borderRadius: 10, padding: "12px 16px", fontSize: "0.9rem" }}
+                          />
+                        </Form.Group>
+                      </Col>
+                    </Row>
 
-                <div>
-                  <label
-                    htmlFor="service"
-                    className="block text-sm font-medium text-gray-700 mb-2"
-                  >
-                    What are you looking for?
-                  </label>
-                  <select
-                    id="service"
-                    name="service"
-                    className="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-shadow bg-white"
-                  >
-                    <option value="">Select an option</option>
-                    <option value="consulting">AI Consulting</option>
-                    <option value="development">AI Full-Stack Development</option>
-                    <option value="both">Both</option>
-                    <option value="other">Something else</option>
-                  </select>
-                </div>
+                    <Form.Group className="mb-3">
+                      <Form.Label className="fw-medium" style={{ fontSize: "0.85rem", color: "#334155" }}>
+                        Company <span style={{ color: "#94a3b8", fontWeight: 400 }}>(optional)</span>
+                      </Form.Label>
+                      <Form.Control
+                        type="text"
+                        name="company"
+                        placeholder="Company name"
+                        style={{ borderRadius: 10, padding: "12px 16px", fontSize: "0.9rem" }}
+                      />
+                    </Form.Group>
 
-                <div>
-                  <label
-                    htmlFor="message"
-                    className="block text-sm font-medium text-gray-700 mb-2"
-                  >
-                    Tell us about your project
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows={5}
-                    required
-                    className="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-shadow resize-none"
-                    placeholder="What problem are you trying to solve? What does success look like?"
-                  />
-                </div>
+                    <Form.Group className="mb-3">
+                      <Form.Label className="fw-medium" style={{ fontSize: "0.85rem", color: "#334155" }}>
+                        What are you looking for?
+                      </Form.Label>
+                      <Form.Select
+                        name="service"
+                        style={{ borderRadius: 10, padding: "12px 16px", fontSize: "0.9rem" }}
+                      >
+                        <option value="">Select an option</option>
+                        <option value="consulting">AI Consulting</option>
+                        <option value="development">AI Full-Stack Development</option>
+                        <option value="both">Both</option>
+                        <option value="other">Something else</option>
+                      </Form.Select>
+                    </Form.Group>
 
-                <button
-                  type="submit"
-                  className="inline-flex items-center px-8 py-3 bg-gray-900 text-white text-sm font-medium rounded-lg hover:bg-gray-800 transition-colors"
-                >
-                  Send message
-                </button>
-              </form>
+                    <Form.Group className="mb-4">
+                      <Form.Label className="fw-medium" style={{ fontSize: "0.85rem", color: "#334155" }}>
+                        Tell us about your project
+                      </Form.Label>
+                      <Form.Control
+                        as="textarea"
+                        rows={5}
+                        name="message"
+                        required
+                        placeholder="What problem are you trying to solve? What does success look like?"
+                        style={{ borderRadius: 10, padding: "12px 16px", fontSize: "0.9rem", resize: "none" }}
+                      />
+                    </Form.Group>
+
+                    <button type="submit" className="btn btn-dark px-5 py-3 w-100 w-sm-auto">
+                      <i className="bi bi-send me-2" />
+                      Send message
+                    </button>
+                  </Form>
+                </Card.Body>
+              </Card>
             )}
-          </div>
+          </Col>
 
           {/* Sidebar */}
-          <div className="lg:col-span-2 space-y-8">
-            <div>
-              <p className="text-xs font-medium uppercase tracking-widest text-gray-400 mb-3">
-                Email
-              </p>
-              <a
-                href={`mailto:${company.email}`}
-                className="text-gray-900 font-medium hover:text-gray-600 transition-colors"
+          <Col lg={5}>
+            <div className="d-flex flex-column gap-4">
+              {/* Email */}
+              <Card className="border" style={{ borderRadius: 16 }}>
+                <Card.Body className="p-4">
+                  <div className="d-flex align-items-start gap-3">
+                    <div className="icon-box flex-shrink-0">
+                      <i className="bi bi-envelope fs-5" />
+                    </div>
+                    <div>
+                      <p
+                        className="fw-semibold mb-1"
+                        style={{ fontSize: "0.7rem", textTransform: "uppercase", letterSpacing: "0.1em", color: "#94a3b8" }}
+                      >
+                        Email
+                      </p>
+                      <a
+                        href={`mailto:${company.email}`}
+                        className="fw-semibold text-decoration-none"
+                        style={{ color: "#0f172a", fontSize: "1rem" }}
+                      >
+                        {company.email}
+                      </a>
+                    </div>
+                  </div>
+                </Card.Body>
+              </Card>
+
+              {/* Calendar */}
+              {company.calendarLink && (
+                <Card className="border" style={{ borderRadius: 16 }}>
+                  <Card.Body className="p-4">
+                    <div className="d-flex align-items-start gap-3">
+                      <div className="icon-box flex-shrink-0">
+                        <i className="bi bi-calendar3 fs-5" />
+                      </div>
+                      <div>
+                        <p
+                          className="fw-semibold mb-1"
+                          style={{ fontSize: "0.7rem", textTransform: "uppercase", letterSpacing: "0.1em", color: "#94a3b8" }}
+                        >
+                          Schedule a call
+                        </p>
+                        <a
+                          href={company.calendarLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="fw-semibold text-decoration-none d-inline-flex align-items-center gap-2"
+                          style={{ color: "#2563eb", fontSize: "0.95rem" }}
+                        >
+                          Book a time <i className="bi bi-arrow-up-right" style={{ fontSize: "0.8rem" }} />
+                        </a>
+                      </div>
+                    </div>
+                  </Card.Body>
+                </Card>
+              )}
+
+              {/* Response time */}
+              <Card className="border" style={{ borderRadius: 16 }}>
+                <Card.Body className="p-4">
+                  <div className="d-flex align-items-start gap-3">
+                    <div className="icon-box flex-shrink-0">
+                      <i className="bi bi-clock fs-5" />
+                    </div>
+                    <div>
+                      <p
+                        className="fw-semibold mb-1"
+                        style={{ fontSize: "0.7rem", textTransform: "uppercase", letterSpacing: "0.1em", color: "#94a3b8" }}
+                      >
+                        Response time
+                      </p>
+                      <p className="mb-0" style={{ fontSize: "0.9rem", color: "#475569", lineHeight: 1.6 }}>
+                        We respond within one business day. If your project is time-sensitive, mention that in your message.
+                      </p>
+                    </div>
+                  </div>
+                </Card.Body>
+              </Card>
+
+              {/* Trust signals */}
+              <Card
+                className="border-0"
+                style={{
+                  borderRadius: 16,
+                  background: "linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%)",
+                }}
               >
-                {company.email}
-              </a>
+                <Card.Body className="p-4">
+                  <div className="d-flex flex-column gap-3">
+                    {[
+                      { icon: "shield-check", text: "100% confidential — NDAs available" },
+                      { icon: "globe", text: "Working with teams across time zones" },
+                      { icon: "lightning-charge", text: "Most projects start within 2 weeks" },
+                    ].map((item) => (
+                      <div key={item.text} className="d-flex align-items-center gap-3">
+                        <i className={`bi bi-${item.icon}`} style={{ color: "#2563eb", fontSize: "1rem" }} />
+                        <span style={{ fontSize: "0.85rem", color: "#475569" }}>{item.text}</span>
+                      </div>
+                    ))}
+                  </div>
+                </Card.Body>
+              </Card>
             </div>
-
-            {company.calendarLink && (
-              <div>
-                <p className="text-xs font-medium uppercase tracking-widest text-gray-400 mb-3">
-                  Schedule a call
-                </p>
-                <a
-                  href={company.calendarLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center text-sm font-medium text-gray-900 border border-gray-300 rounded-lg px-5 py-2.5 hover:border-gray-400 transition-colors"
-                >
-                  Book a time →
-                </a>
-              </div>
-            )}
-
-            <div>
-              <p className="text-xs font-medium uppercase tracking-widest text-gray-400 mb-3">
-                Response time
-              </p>
-              <p className="text-sm text-gray-600">
-                We respond within one business day. If your project is time-sensitive, mention that in your message.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
+          </Col>
+        </Row>
+      </Container>
     </>
   );
 }

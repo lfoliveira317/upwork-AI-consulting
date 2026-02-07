@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import { Container, Nav, Navbar as BSNavbar, Offcanvas } from "react-bootstrap";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -15,71 +16,102 @@ const navLinks = [
 
 export function Navbar() {
   const pathname = usePathname();
-  const [mobileOpen, setMobileOpen] = useState(false);
+  const [show, setShow] = useState(false);
 
   return (
-    <header className="border-b border-gray-200 bg-white/80 backdrop-blur-sm sticky top-0 z-50">
-      <nav className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-        <Link href="/" className="text-xl font-bold tracking-tight text-gray-900">
-          Apex AI
+    <BSNavbar
+      expand="lg"
+      fixed="top"
+      className="bg-white bg-opacity-90 border-bottom py-2"
+      style={{ backdropFilter: "blur(12px)" }}
+    >
+      <Container>
+        <Link href="/" className="navbar-brand d-flex align-items-center gap-2" style={{ textDecoration: "none" }}>
+          <div
+            className="d-flex align-items-center justify-content-center rounded"
+            style={{
+              width: 36,
+              height: 36,
+              background: "linear-gradient(135deg, #0f172a 0%, #2563eb 100%)",
+            }}
+          >
+            <i className="bi bi-cpu text-white" style={{ fontSize: "1rem" }} />
+          </div>
+          <span className="fw-bold fs-5" style={{ letterSpacing: "-0.03em", color: "#0f172a" }}>
+            Apex AI
+          </span>
         </Link>
 
+        <BSNavbar.Toggle
+          aria-controls="main-nav"
+          onClick={() => setShow(true)}
+          className="border-0 shadow-none"
+        />
+
         {/* Desktop nav */}
-        <ul className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <li key={link.href}>
-              <Link
-                href={link.href}
-                className={`text-sm transition-colors ${
-                  pathname === link.href
-                    ? "text-gray-900 font-medium"
-                    : "text-gray-500 hover:text-gray-900"
-                }`}
-              >
-                {link.label}
-              </Link>
-            </li>
-          ))}
-        </ul>
-
-        {/* Mobile toggle */}
-        <button
-          className="md:hidden p-2 text-gray-600"
-          onClick={() => setMobileOpen(!mobileOpen)}
-          aria-label="Toggle menu"
-        >
-          <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2">
-            {mobileOpen ? (
-              <path d="M6 6l12 12M6 18L18 6" />
-            ) : (
-              <path d="M4 6h16M4 12h16M4 18h16" />
-            )}
-          </svg>
-        </button>
-      </nav>
-
-      {/* Mobile menu */}
-      {mobileOpen && (
-        <div className="md:hidden border-t border-gray-200 bg-white">
-          <ul className="flex flex-col px-6 py-4 gap-4">
+        <BSNavbar.Collapse id="main-nav" className="d-none d-lg-flex">
+          <Nav className="ms-auto align-items-center gap-1">
             {navLinks.map((link) => (
-              <li key={link.href}>
+              <Nav.Item key={link.href}>
                 <Link
                   href={link.href}
-                  onClick={() => setMobileOpen(false)}
-                  className={`text-sm block ${
+                  className={`nav-link px-3 py-2 rounded-2 ${
                     pathname === link.href
-                      ? "text-gray-900 font-medium"
-                      : "text-gray-500"
+                      ? "fw-semibold text-dark bg-light"
+                      : "text-secondary"
                   }`}
+                  style={{ fontSize: "0.875rem", transition: "all 0.15s ease" }}
                 >
                   {link.label}
                 </Link>
-              </li>
+              </Nav.Item>
             ))}
-          </ul>
-        </div>
-      )}
-    </header>
+            <Nav.Item className="ms-2">
+              <Link href="/contact" className="btn btn-dark btn-sm px-4 py-2">
+                Get in touch
+              </Link>
+            </Nav.Item>
+          </Nav>
+        </BSNavbar.Collapse>
+
+        {/* Mobile offcanvas */}
+        <Offcanvas show={show} onHide={() => setShow(false)} placement="end" className="d-lg-none">
+          <Offcanvas.Header closeButton className="border-bottom">
+            <Offcanvas.Title>
+              <span className="fw-bold" style={{ color: "#0f172a" }}>Apex AI</span>
+            </Offcanvas.Title>
+          </Offcanvas.Header>
+          <Offcanvas.Body>
+            <Nav className="flex-column gap-1">
+              {navLinks.map((link) => (
+                <Nav.Item key={link.href}>
+                  <Link
+                    href={link.href}
+                    onClick={() => setShow(false)}
+                    className={`nav-link px-3 py-3 rounded-2 ${
+                      pathname === link.href
+                        ? "fw-semibold text-dark bg-light"
+                        : "text-secondary"
+                    }`}
+                    style={{ fontSize: "1rem" }}
+                  >
+                    {link.label}
+                  </Link>
+                </Nav.Item>
+              ))}
+              <div className="mt-3 pt-3 border-top">
+                <Link
+                  href="/contact"
+                  onClick={() => setShow(false)}
+                  className="btn btn-dark w-100 py-3"
+                >
+                  Get in touch
+                </Link>
+              </div>
+            </Nav>
+          </Offcanvas.Body>
+        </Offcanvas>
+      </Container>
+    </BSNavbar>
   );
 }

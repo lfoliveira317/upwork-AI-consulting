@@ -6,8 +6,12 @@
   --color-text: #1a1a1a;
   --color-text-muted: #6b7280;
   --color-border: #e5e7eb;
-  --color-accent: #111827;
-  --color-accent-hover: #374151;
+  --color-accent: #0f172a;
+  --color-accent-hover: #1e293b;
+  --color-primary: #2563eb;
+  --color-primary-hover: #1d4ed8;
+  --color-gradient-start: #0f172a;
+  --color-gradient-end: #1e3a5f;
 }
 
 html {
@@ -23,6 +27,193 @@ body {
 }
 
 ::selection {
-  background-color: #111827;
+  background-color: var(--color-primary);
   color: #ffffff;
+}
+
+/* ─── Hero gradient background ──────────────────────── */
+.hero-gradient {
+  background: linear-gradient(135deg, var(--color-gradient-start) 0%, var(--color-gradient-end) 50%, #0f172a 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-gradient::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 70% 20%, rgba(37, 99, 235, 0.15) 0%, transparent 60%),
+    radial-gradient(ellipse at 30% 80%, rgba(99, 102, 241, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* ─── Grid pattern overlay ──────────────────────────── */
+.grid-pattern {
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* ─── Animated gradient border ──────────────────────── */
+.gradient-border {
+  position: relative;
+  border: 1px solid transparent;
+  background-clip: padding-box;
+}
+
+.gradient-border::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, #e2e8f0 0%, #f1f5f9 50%, #e2e8f0 100%);
+  z-index: -1;
+}
+
+/* ─── Hover card lift ───────────────────────────────── */
+.card-lift {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+}
+
+/* ─── Stat counter styling ──────────────────────────── */
+.stat-number {
+  background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-primary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─── Service icon box ──────────────────────────────── */
+.icon-box {
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #eff6ff 0%, #f0f9ff 100%);
+  color: var(--color-primary);
+}
+
+/* ─── Section divider ───────────────────────────────── */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, #e2e8f0 20%, #e2e8f0 80%, transparent 100%);
+}
+
+/* ─── Status badge pulse ────────────────────────────── */
+.status-active::before {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #22c55e;
+  margin-right: 6px;
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+/* ─── Bootstrap overrides ───────────────────────────── */
+.btn-dark {
+  background-color: var(--color-accent) !important;
+  border-color: var(--color-accent) !important;
+  border-radius: 8px !important;
+  padding: 12px 28px !important;
+  font-weight: 500 !important;
+  letter-spacing: -0.01em;
+  transition: all 0.2s ease !important;
+}
+
+.btn-dark:hover {
+  background-color: var(--color-accent-hover) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.3);
+}
+
+.btn-outline-dark {
+  border-radius: 8px !important;
+  padding: 12px 28px !important;
+  font-weight: 500 !important;
+  letter-spacing: -0.01em;
+  transition: all 0.2s ease !important;
+}
+
+.btn-outline-dark:hover {
+  transform: translateY(-1px);
+}
+
+.btn-primary {
+  background-color: var(--color-primary) !important;
+  border-color: var(--color-primary) !important;
+  border-radius: 8px !important;
+  padding: 12px 28px !important;
+  font-weight: 500 !important;
+  transition: all 0.2s ease !important;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary-hover) !important;
+  border-color: var(--color-primary-hover) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+/* ─── Tag styling ───────────────────────────────────── */
+.tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  padding: 4px 12px;
+  border-radius: 100px;
+  border: 1px solid #e2e8f0;
+  color: #64748b;
+  font-weight: 500;
+  transition: all 0.15s ease;
+}
+
+.tag:hover {
+  border-color: #cbd5e1;
+  color: #475569;
+  background: #f8fafc;
+}
+
+/* ─── Form styling ──────────────────────────────────── */
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--color-primary) !important;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1) !important;
+}
+
+/* ─── Navbar styling ────────────────────────────────── */
+.navbar {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* ─── Smooth section transitions ────────────────────── */
+section {
+  position: relative;
+}
+
+/* ─── Number accent ─────────────────────────────────── */
+.step-number {
+  font-size: 5rem;
+  font-weight: 800;
+  line-height: 1;
+  color: #f1f5f9;
+  position: absolute;
+  top: -10px;
+  left: -5px;
+  z-index: 0;
+  user-select: none;
 }

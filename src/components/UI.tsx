@@ -14,24 +14,14 @@ export function SectionHeader({
 }) {
   return (
     <div className={`mb-5 ${center ? "text-center" : ""}`} style={{ maxWidth: center ? 640 : undefined, margin: center ? "0 auto" : undefined }}>
-      <span
-        className="d-inline-block px-3 py-1 rounded-pill mb-3"
-        style={{
-          fontSize: "0.75rem",
-          fontWeight: 600,
-          letterSpacing: "0.06em",
-          textTransform: "uppercase",
-          backgroundColor: "#f1f5f9",
-          color: "#475569",
-        }}
-      >
+      <span className="section-label mb-3">
         {label}
       </span>
-      <h2 className="fw-bold mb-2" style={{ letterSpacing: "-0.03em" }}>
+      <h2 className="fw-bold mb-2" style={{ letterSpacing: "-0.03em", fontSize: "2rem" }}>
         {title}
       </h2>
       {subtitle && (
-        <p className="text-secondary" style={{ fontSize: "1.05rem", lineHeight: 1.7 }}>
+        <p className="text-secondary" style={{ fontSize: "1.05rem", lineHeight: 1.8 }}>
           {subtitle}
         </p>
       )}
@@ -50,29 +40,34 @@ export function PageHero({
   badge?: string;
 }) {
   return (
-    <section className="hero-gradient grid-pattern text-white" style={{ paddingTop: "8rem", paddingBottom: "4rem" }}>
+    <section className="hero-gradient grid-pattern text-white" style={{ paddingTop: "9rem", paddingBottom: "5rem" }}>
+      {/* Floating orbs */}
+      <div className="hero-orb hero-orb-1" />
+      <div className="hero-orb hero-orb-2" />
+
       <div className="container position-relative" style={{ zIndex: 1 }}>
         <div className="row justify-content-center">
           <div className="col-lg-8 text-center">
             {badge && (
               <span
-                className="d-inline-block px-3 py-1 rounded-pill mb-3"
+                className="d-inline-block px-3 py-1 rounded-pill mb-3 animate-fade-in-down"
                 style={{
                   fontSize: "0.75rem",
                   fontWeight: 600,
                   letterSpacing: "0.06em",
                   textTransform: "uppercase",
-                  backgroundColor: "rgba(255,255,255,0.1)",
-                  border: "1px solid rgba(255,255,255,0.15)",
+                  backgroundColor: "rgba(255,255,255,0.06)",
+                  border: "1px solid rgba(255,255,255,0.1)",
+                  backdropFilter: "blur(8px)",
                 }}
               >
                 {badge}
               </span>
             )}
-            <h1 className="fw-bold mb-3" style={{ fontSize: "2.75rem", letterSpacing: "-0.03em" }}>
+            <h1 className="fw-bold mb-3 animate-fade-in-up delay-1 glow-text" style={{ fontSize: "3rem", letterSpacing: "-0.03em" }}>
               {title}
             </h1>
-            <p className="mb-0" style={{ color: "#94a3b8", fontSize: "1.1rem", lineHeight: 1.7 }}>
+            <p className="mb-0 animate-fade-in-up delay-2" style={{ color: "#94a3b8", fontSize: "1.15rem", lineHeight: 1.8 }}>
               {subtitle}
             </p>
           </div>
@@ -97,7 +92,7 @@ export function Button({
   className?: string;
 }) {
   return (
-    <Link to={href} className={`btn btn-${variant} ${size ? `btn-${size}` : ""} ${className}`}>
+    <Link to={href} className={`btn btn-${variant} ${size ? `btn-${size}` : ""} btn-glow ${className}`}>
       {children}
     </Link>
   );
@@ -107,10 +102,10 @@ export function Button({
 export function StatCard({ value, label }: { value: string; label: string }) {
   return (
     <div className="text-center">
-      <div className="stat-number fw-bold mb-1" style={{ fontSize: "2.25rem", letterSpacing: "-0.03em" }}>
+      <div className="stat-number fw-bold mb-1" style={{ fontSize: "2.5rem", letterSpacing: "-0.03em" }}>
         {value}
       </div>
-      <div className="text-secondary" style={{ fontSize: "0.85rem" }}>
+      <div className="text-secondary" style={{ fontSize: "0.85rem", fontWeight: 500 }}>
         {label}
       </div>
     </div>

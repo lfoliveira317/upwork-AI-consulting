@@ -20,24 +20,16 @@ export default function Team() {
             subtitle="Decades of combined experience from the world's leading technology companies and research institutions"
           />
           <Row className="g-4">
-            {team.map((member) => (
+            {team.map((member, i) => (
               <Col md={6} lg={4} key={member.name}>
-                <Card className="h-100 border-0 shadow-sm card-lift text-center" style={{ borderRadius: 12 }}>
+                <Card className={`h-100 border-0 shadow-sm card-glow text-center animate-fade-in-up delay-${(i % 3) + 1}`}>
                   <Card.Body className="p-4">
-                    <div
-                      className="mx-auto mb-3 d-flex align-items-center justify-content-center rounded-circle"
-                      style={{
-                        width: 80,
-                        height: 80,
-                        backgroundColor: "#f1f5f9",
-                        color: "#64748b",
-                      }}
-                    >
+                    <div className="team-avatar mx-auto mb-3">
                       <i className={`bi ${member.icon}`} style={{ fontSize: "2rem" }}></i>
                     </div>
-                    <h5 className="fw-semibold mb-1">{member.name}</h5>
-                    <p className="text-primary small fw-medium mb-3">{member.role}</p>
-                    <p className="text-secondary small mb-0" style={{ lineHeight: 1.7 }}>
+                    <h5 className="fw-semibold mb-1" style={{ letterSpacing: "-0.02em" }}>{member.name}</h5>
+                    <p className="small fw-medium mb-3" style={{ color: "var(--color-primary)" }}>{member.role}</p>
+                    <p className="text-secondary small mb-0" style={{ lineHeight: 1.8 }}>
                       {member.bio}
                     </p>
                   </Card.Body>
@@ -82,12 +74,12 @@ export default function Team() {
               },
             ].map((value) => (
               <Col md={6} lg={3} key={value.title}>
-                <div className="text-center p-3">
+                <div className="feature-card">
                   <div className="icon-box mx-auto mb-3">
                     <i className={`bi ${value.icon} fs-4`}></i>
                   </div>
                   <h6 className="fw-semibold mb-2">{value.title}</h6>
-                  <p className="text-secondary small mb-0">{value.description}</p>
+                  <p className="text-secondary small mb-0" style={{ lineHeight: 1.7 }}>{value.description}</p>
                 </div>
               </Col>
             ))}
@@ -96,14 +88,15 @@ export default function Team() {
       </section>
 
       {/* ─── CTA ────────────────────────────────────────── */}
-      <section className="hero-gradient grid-pattern text-white py-5">
+      <section className="hero-gradient grid-pattern text-white py-5 cta-section">
+        <div className="hero-orb hero-orb-2" />
         <Container className="position-relative py-4" style={{ zIndex: 1 }}>
           <Row className="justify-content-center">
             <Col lg={7} className="text-center">
-              <h2 className="fw-bold mb-3" style={{ letterSpacing: "-0.03em" }}>
-                Join Our Team
+              <h2 className="fw-bold mb-3" style={{ fontSize: "2rem", letterSpacing: "-0.03em" }}>
+                <span className="gradient-text">Join</span> Our Team
               </h2>
-              <p className="mb-4" style={{ color: "#94a3b8" }}>
+              <p className="mb-4" style={{ color: "#94a3b8", lineHeight: 1.8 }}>
                 We're always looking for talented people who are passionate about AI.
               </p>
               <Button href="/contact" variant="light" size="lg">

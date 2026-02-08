@@ -18,7 +18,9 @@ export default function Portfolio() {
           <Row className="g-4">
             {stats.map((stat) => (
               <Col xs={6} md={3} key={stat.label}>
-                <StatCard value={stat.value} label={stat.label} />
+                <div className="stat-card">
+                  <StatCard value={stat.value} label={stat.label} />
+                </div>
               </Col>
             ))}
           </Row>
@@ -34,34 +36,25 @@ export default function Portfolio() {
             subtitle="Detailed look at how we've helped enterprise clients achieve their AI goals"
           />
           <Row className="g-4">
-            {portfolio.map((project) => (
+            {portfolio.map((project, i) => (
               <Col md={6} key={project.id}>
-                <Card className="h-100 border-0 shadow-sm card-lift" style={{ borderRadius: 12 }}>
+                <Card className={`h-100 border-0 shadow-sm card-glow animate-fade-in-up delay-${(i % 2) + 1}`}>
                   <Card.Body className="p-4">
                     <div className="d-flex justify-content-between align-items-start mb-3">
-                      <Badge bg="light" text="dark" className="px-2 py-1" style={{ fontSize: "0.7rem" }}>
+                      <Badge bg="light" text="dark">
                         {project.industry}
                       </Badge>
                       <span className="text-secondary" style={{ fontSize: "0.75rem" }}>
                         {project.client}
                       </span>
                     </div>
-                    <h4 className="fw-semibold mb-2">{project.title}</h4>
-                    <p className="text-secondary mb-3">{project.description}</p>
+                    <h4 className="fw-semibold mb-2" style={{ letterSpacing: "-0.02em" }}>{project.title}</h4>
+                    <p className="text-secondary mb-3" style={{ lineHeight: 1.7 }}>{project.description}</p>
 
                     {/* Metrics */}
                     <div className="d-flex flex-wrap gap-2 mb-3">
                       {project.metrics.map((metric) => (
-                        <span
-                          key={metric}
-                          className="px-2 py-1 rounded-2"
-                          style={{
-                            fontSize: "0.75rem",
-                            fontWeight: 600,
-                            backgroundColor: "#eff6ff",
-                            color: "#2563eb",
-                          }}
-                        >
+                        <span key={metric} className="metric-tag">
                           {metric}
                         </span>
                       ))}
@@ -84,14 +77,15 @@ export default function Portfolio() {
       </section>
 
       {/* ─── CTA ────────────────────────────────────────── */}
-      <section className="hero-gradient grid-pattern text-white py-5">
+      <section className="hero-gradient grid-pattern text-white py-5 cta-section">
+        <div className="hero-orb hero-orb-1" />
         <Container className="position-relative py-4" style={{ zIndex: 1 }}>
           <Row className="justify-content-center">
             <Col lg={7} className="text-center">
-              <h2 className="fw-bold mb-3" style={{ letterSpacing: "-0.03em" }}>
-                Want Similar Results?
+              <h2 className="fw-bold mb-3" style={{ fontSize: "2rem", letterSpacing: "-0.03em" }}>
+                Want <span className="gradient-text">Similar Results</span>?
               </h2>
-              <p className="mb-4" style={{ color: "#94a3b8" }}>
+              <p className="mb-4" style={{ color: "#94a3b8", lineHeight: 1.8 }}>
                 Let's discuss how we can deliver measurable AI impact for your business.
               </p>
               <Button href="/contact" variant="light" size="lg">

@@ -9,59 +9,79 @@ export default function Home() {
       {/* ─── Hero ──────────────────────────────────────── */}
       <section
         className="hero-gradient grid-pattern text-white d-flex align-items-center"
-        style={{ minHeight: "92vh", paddingTop: "6rem" }}
+        style={{ minHeight: "100vh", paddingTop: "6rem" }}
       >
+        {/* Floating orbs */}
+        <div className="hero-orb hero-orb-1" />
+        <div className="hero-orb hero-orb-2" />
+        <div className="hero-orb hero-orb-3" />
+
         <Container className="position-relative" style={{ zIndex: 1 }}>
           <Row className="justify-content-center">
-            <Col lg={8} className="text-center">
+            <Col lg={9} className="text-center">
               <span
-                className="d-inline-block px-3 py-1 rounded-pill mb-4 status-active"
+                className="d-inline-block px-3 py-2 rounded-pill mb-4 status-active animate-fade-in-down"
                 style={{
                   fontSize: "0.8rem",
                   fontWeight: 500,
-                  backgroundColor: "rgba(255,255,255,0.08)",
-                  border: "1px solid rgba(255,255,255,0.12)",
+                  backgroundColor: "rgba(255,255,255,0.06)",
+                  border: "1px solid rgba(255,255,255,0.1)",
+                  backdropFilter: "blur(8px)",
                 }}
               >
                 Now accepting new enterprise clients
               </span>
 
               <h1
-                className="fw-bold mb-4"
+                className="fw-bold mb-4 animate-fade-in-up delay-1"
                 style={{
-                  fontSize: "clamp(2.5rem, 5vw, 4rem)",
+                  fontSize: "clamp(2.8rem, 6vw, 4.5rem)",
                   letterSpacing: "-0.04em",
-                  lineHeight: 1.1,
+                  lineHeight: 1.05,
                 }}
               >
                 AI Solutions That
                 <br />
-                <span style={{ color: "#60a5fa" }}>Drive Results</span>
+                <span className="gradient-text-shine">Drive Results</span>
               </h1>
 
               <p
-                className="mx-auto mb-5"
+                className="mx-auto mb-5 animate-fade-in-up delay-2"
                 style={{
                   color: "#94a3b8",
-                  fontSize: "1.15rem",
+                  fontSize: "1.2rem",
                   lineHeight: 1.8,
-                  maxWidth: 560,
+                  maxWidth: 580,
                 }}
               >
                 {company.description}
               </p>
 
-              <div className="d-flex gap-3 justify-content-center flex-wrap">
-                <Link to="/contact" className="btn btn-light btn-lg px-4">
+              <div className="d-flex gap-3 justify-content-center flex-wrap animate-fade-in-up delay-3">
+                <Link to="/contact" className="btn btn-light btn-lg px-5 btn-glow" style={{ padding: "14px 32px" }}>
                   Start a Project <i className="bi bi-arrow-right ms-2"></i>
                 </Link>
                 <Link
                   to="/portfolio"
-                  className="btn btn-outline-light btn-lg px-4"
-                  style={{ borderColor: "rgba(255,255,255,0.2)" }}
+                  className="btn btn-outline-light btn-lg px-5"
+                  style={{ borderColor: "rgba(255,255,255,0.15)", padding: "14px 32px" }}
                 >
                   View Our Work
                 </Link>
+              </div>
+
+              {/* Trusted by logos placeholder */}
+              <div className="mt-5 pt-4 animate-fade-in-up delay-5">
+                <p className="text-uppercase small mb-3" style={{ color: "#475569", letterSpacing: "0.1em", fontSize: "0.7rem" }}>
+                  Trusted by innovative companies
+                </p>
+                <div className="d-flex justify-content-center align-items-center gap-4 flex-wrap" style={{ opacity: 0.4 }}>
+                  {["Fortune 500 Tech", "Global Bank", "Healthcare Network", "Auto Manufacturer"].map((name) => (
+                    <span key={name} className="text-white fw-medium" style={{ fontSize: "0.85rem", letterSpacing: "-0.02em" }}>
+                      {name}
+                    </span>
+                  ))}
+                </div>
               </div>
             </Col>
           </Row>
@@ -72,9 +92,11 @@ export default function Home() {
       <section className="py-5" style={{ backgroundColor: "#fff", borderBottom: "1px solid #e5e7eb" }}>
         <Container>
           <Row className="g-4">
-            {stats.map((stat) => (
+            {stats.map((stat, i) => (
               <Col xs={6} md={3} key={stat.label}>
-                <StatCard value={stat.value} label={stat.label} />
+                <div className="stat-card">
+                  <StatCard value={stat.value} label={stat.label} />
+                </div>
               </Col>
             ))}
           </Row>
@@ -90,19 +112,19 @@ export default function Home() {
             subtitle="End-to-end AI solutions from strategy to deployment"
           />
           <Row className="g-4">
-            {services.slice(0, 3).map((service) => (
+            {services.slice(0, 3).map((service, i) => (
               <Col md={4} key={service.id}>
-                <Card className="h-100 border-0 shadow-sm card-lift" style={{ borderRadius: 12 }}>
+                <Card className="h-100 border-0 shadow-sm card-glow">
                   <Card.Body className="p-4">
                     <div className="icon-box mb-3">
                       <i className={`bi ${service.icon} fs-4`}></i>
                     </div>
-                    <h5 className="fw-semibold mb-2">{service.title}</h5>
-                    <p className="text-secondary small mb-3">{service.description}</p>
+                    <h5 className="fw-semibold mb-2" style={{ letterSpacing: "-0.02em" }}>{service.title}</h5>
+                    <p className="text-secondary small mb-3" style={{ lineHeight: 1.7 }}>{service.description}</p>
                     <ul className="list-unstyled mb-0">
                       {service.features.slice(0, 2).map((f) => (
                         <li key={f} className="d-flex align-items-center gap-2 small text-secondary mb-1">
-                          <i className="bi bi-check2 text-primary"></i> {f}
+                          <i className="bi bi-check-circle-fill" style={{ color: "var(--color-primary)", fontSize: "0.7rem" }}></i> {f}
                         </li>
                       ))}
                     </ul>
@@ -132,21 +154,21 @@ export default function Home() {
           <Row className="g-4">
             {portfolio.slice(0, 2).map((project) => (
               <Col md={6} key={project.id}>
-                <Card className="h-100 border-0 shadow-sm card-lift" style={{ borderRadius: 12 }}>
+                <Card className="h-100 border-0 shadow-sm card-glow">
                   <Card.Body className="p-4">
                     <div className="d-flex justify-content-between align-items-start mb-3">
-                      <Badge bg="light" text="dark" className="px-2 py-1" style={{ fontSize: "0.7rem" }}>
+                      <Badge bg="light" text="dark">
                         {project.industry}
                       </Badge>
                       <span className="text-secondary" style={{ fontSize: "0.75rem" }}>
                         {project.client}
                       </span>
                     </div>
-                    <h5 className="fw-semibold mb-2">{project.title}</h5>
-                    <p className="text-secondary small mb-3">{project.description}</p>
+                    <h5 className="fw-semibold mb-2" style={{ letterSpacing: "-0.02em" }}>{project.title}</h5>
+                    <p className="text-secondary small mb-3" style={{ lineHeight: 1.7 }}>{project.description}</p>
                     <div className="d-flex flex-wrap gap-2">
                       {project.metrics.map((m) => (
-                        <span key={m} className="tag">
+                        <span key={m} className="metric-tag">
                           {m}
                         </span>
                       ))}
@@ -177,22 +199,18 @@ export default function Home() {
           <Row className="g-4">
             {products.slice(0, 3).map((product) => (
               <Col md={4} key={product.id}>
-                <Card className="h-100 border-0 shadow-sm card-lift" style={{ borderRadius: 12 }}>
+                <Card className="h-100 border-0 shadow-sm card-glow">
                   <Card.Body className="p-4">
                     <div className="d-flex justify-content-between align-items-start mb-3">
                       <div className="icon-box">
                         <i className={`bi ${product.icon} fs-4`}></i>
                       </div>
-                      <Badge
-                        bg={product.status === "Live" ? "success" : "warning"}
-                        className="px-2 py-1"
-                        style={{ fontSize: "0.7rem" }}
-                      >
+                      <Badge bg={product.status === "Live" ? "success" : "warning"}>
                         {product.status}
                       </Badge>
                     </div>
-                    <h5 className="fw-semibold mb-2">{product.name}</h5>
-                    <p className="text-secondary small mb-0">{product.description}</p>
+                    <h5 className="fw-semibold mb-2" style={{ letterSpacing: "-0.02em" }}>{product.name}</h5>
+                    <p className="text-secondary small mb-0" style={{ lineHeight: 1.7 }}>{product.description}</p>
                   </Card.Body>
                 </Card>
               </Col>
@@ -207,17 +225,19 @@ export default function Home() {
       </section>
 
       {/* ─── CTA ───────────────────────────────────────── */}
-      <section className="hero-gradient grid-pattern text-white py-5 my-0">
+      <section className="hero-gradient grid-pattern text-white py-5 my-0 cta-section">
+        <div className="hero-orb hero-orb-2" />
         <Container className="position-relative py-5" style={{ zIndex: 1 }}>
           <Row className="justify-content-center">
             <Col lg={7} className="text-center">
-              <h2 className="fw-bold mb-3" style={{ letterSpacing: "-0.03em" }}>
-                Ready to Transform Your Business with AI?
+              <h2 className="fw-bold mb-3" style={{ fontSize: "2.25rem", letterSpacing: "-0.03em" }}>
+                Ready to Transform Your Business with{" "}
+                <span className="gradient-text">AI</span>?
               </h2>
-              <p className="mb-4" style={{ color: "#94a3b8", lineHeight: 1.7 }}>
+              <p className="mb-4" style={{ color: "#94a3b8", lineHeight: 1.8, fontSize: "1.05rem" }}>
                 Let's discuss how our solutions can drive measurable impact for your organization.
               </p>
-              <Link to="/contact" className="btn btn-light btn-lg px-4">
+              <Link to="/contact" className="btn btn-light btn-lg px-5 btn-glow" style={{ padding: "14px 36px" }}>
                 Get in Touch <i className="bi bi-arrow-right ms-2"></i>
               </Link>
             </Col>

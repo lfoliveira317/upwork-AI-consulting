@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Navbar as BSNavbar, Container, Nav, Offcanvas } from "react-bootstrap";
 import { company, navigation } from "../data/siteData";
@@ -6,30 +6,43 @@ import { company, navigation } from "../data/siteData";
 export default function Navbar() {
   const { pathname } = useLocation();
   const [showMenu, setShowMenu] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
     <BSNavbar
       fixed="top"
       expand="lg"
-      className="py-3"
-      style={{ backgroundColor: "rgba(255,255,255,0.92)", borderBottom: "1px solid #e5e7eb" }}
+      className={`py-2 animate-fade-in-down ${scrolled ? "shadow-sm" : ""}`}
+      style={{
+        backgroundColor: scrolled ? "rgba(255,255,255,0.95)" : "rgba(255,255,255,0.85)",
+        borderBottom: scrolled ? "1px solid #e2e8f0" : "1px solid transparent",
+        transition: "all 0.3s ease",
+      }}
     >
       <Container>
         <BSNavbar.Brand
           as={Link}
           to="/"
-          className="fw-bold fs-5 d-flex align-items-center gap-2"
-          style={{ color: "#0f172a", letterSpacing: "-0.03em" }}
+          className="fw-bold d-flex align-items-center gap-2"
+          style={{ color: "#0f172a", letterSpacing: "-0.03em", fontSize: "1.15rem" }}
         >
           <span
-            className="d-flex align-items-center justify-content-center rounded-2"
+            className="d-flex align-items-center justify-content-center"
             style={{
-              width: 32,
-              height: 32,
-              background: "linear-gradient(135deg, #0f172a, #1e3a5f)",
+              width: 36,
+              height: 36,
+              background: "linear-gradient(135deg, #0f172a, #2563eb)",
               color: "#fff",
-              fontSize: "0.85rem",
+              fontSize: "0.9rem",
               fontWeight: 700,
+              borderRadius: 10,
+              boxShadow: "0 2px 8px rgba(15, 23, 42, 0.2)",
             }}
           >
             A
@@ -75,11 +88,11 @@ export default function Navbar() {
               ))}
               <Link
                 to="/contact"
-                className="btn btn-dark btn-sm ms-lg-2 mt-2 mt-lg-0"
-                style={{ padding: "8px 20px", fontSize: "0.875rem" }}
+                className="btn btn-dark btn-sm ms-lg-3 mt-2 mt-lg-0"
+                style={{ padding: "9px 22px", fontSize: "0.875rem", borderRadius: 10 }}
                 onClick={() => setShowMenu(false)}
               >
-                Get Started
+                Get Started <i className="bi bi-arrow-right ms-1"></i>
               </Link>
             </Nav>
           </Offcanvas.Body>

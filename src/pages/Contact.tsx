@@ -24,7 +24,7 @@ export default function Contact() {
           <Row className="g-5">
             {/* ─── Contact Form ──────────────────────────── */}
             <Col lg={7}>
-              <Card className="border-0 shadow-sm" style={{ borderRadius: 12 }}>
+              <Card className="border-0 shadow-sm card-glow animate-fade-in-up delay-1">
                 <Card.Body className="p-4 p-lg-5">
                   {submitted ? (
                     <div className="text-center py-5">
@@ -138,7 +138,7 @@ export default function Contact() {
                     sub: "By appointment only",
                   },
                 ].map((item) => (
-                  <Card key={item.title} className="border-0 shadow-sm" style={{ borderRadius: 12 }}>
+                  <Card key={item.title} className="border-0 shadow-sm card-glow">
                     <Card.Body className="p-4 d-flex gap-3">
                       <div className="icon-box flex-shrink-0">
                         <i className={`bi ${item.icon} fs-5`}></i>
@@ -155,16 +155,16 @@ export default function Contact() {
                 ))}
 
                 {/* Social */}
-                <Card className="border-0 shadow-sm" style={{ borderRadius: 12 }}>
+                <Card className="border-0 shadow-sm card-glow">
                   <Card.Body className="p-4">
                     <h6 className="fw-semibold mb-3">Follow Us</h6>
-                    <div className="d-flex gap-3">
+                    <div className="d-flex gap-2">
                       {Object.entries(company.social).map(([platform, url]) => (
                         <a
                           key={platform}
                           href={url}
-                          className="icon-box text-decoration-none"
-                          style={{ width: 44, height: 44, borderRadius: 10 }}
+                          className="social-icon text-decoration-none"
+                          style={{ background: "linear-gradient(135deg, #eff6ff, #f0f9ff)" }}
                         >
                           <i className={`bi bi-${platform}`}></i>
                         </a>

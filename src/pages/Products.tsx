@@ -20,24 +20,20 @@ export default function Products() {
             subtitle="Each product is battle-tested across multiple enterprise deployments"
           />
           <Row className="g-4">
-            {products.map((product) => (
+            {products.map((product, i) => (
               <Col md={6} key={product.id}>
-                <Card className="h-100 border-0 shadow-sm card-lift" style={{ borderRadius: 12 }}>
+                <Card className={`h-100 border-0 shadow-sm card-glow animate-fade-in-up delay-${(i % 2) + 1}`}>
                   <Card.Body className="p-4">
                     <div className="d-flex justify-content-between align-items-start mb-3">
                       <div className="icon-box">
                         <i className={`bi ${product.icon} fs-4`}></i>
                       </div>
-                      <Badge
-                        bg={product.status === "Live" ? "success" : "warning"}
-                        className="px-2 py-1"
-                        style={{ fontSize: "0.7rem" }}
-                      >
+                      <Badge bg={product.status === "Live" ? "success" : "warning"}>
                         {product.status}
                       </Badge>
                     </div>
-                    <h4 className="fw-semibold mb-2">{product.name}</h4>
-                    <p className="text-secondary mb-3">{product.description}</p>
+                    <h4 className="fw-semibold mb-2" style={{ letterSpacing: "-0.02em" }}>{product.name}</h4>
+                    <p className="text-secondary mb-3" style={{ lineHeight: 1.7 }}>{product.description}</p>
                     <div className="d-flex flex-wrap gap-2">
                       {product.tags.map((tag) => (
                         <span key={tag} className="tag">
@@ -87,12 +83,12 @@ export default function Products() {
               },
             ].map((feature) => (
               <Col md={6} lg={3} key={feature.title}>
-                <div className="text-center p-3">
+                <div className="feature-card">
                   <div className="icon-box mx-auto mb-3">
                     <i className={`bi ${feature.icon} fs-4`}></i>
                   </div>
                   <h6 className="fw-semibold mb-2">{feature.title}</h6>
-                  <p className="text-secondary small mb-0">{feature.description}</p>
+                  <p className="text-secondary small mb-0" style={{ lineHeight: 1.7 }}>{feature.description}</p>
                 </div>
               </Col>
             ))}
@@ -101,14 +97,15 @@ export default function Products() {
       </section>
 
       {/* ─── CTA ────────────────────────────────────────── */}
-      <section className="hero-gradient grid-pattern text-white py-5">
+      <section className="hero-gradient grid-pattern text-white py-5 cta-section">
+        <div className="hero-orb hero-orb-1" />
         <Container className="position-relative py-4" style={{ zIndex: 1 }}>
           <Row className="justify-content-center">
             <Col lg={7} className="text-center">
-              <h2 className="fw-bold mb-3" style={{ letterSpacing: "-0.03em" }}>
-                Want a Demo?
+              <h2 className="fw-bold mb-3" style={{ fontSize: "2rem", letterSpacing: "-0.03em" }}>
+                Want a <span className="gradient-text">Demo</span>?
               </h2>
-              <p className="mb-4" style={{ color: "#94a3b8" }}>
+              <p className="mb-4" style={{ color: "#94a3b8", lineHeight: 1.8 }}>
                 See our products in action with a personalized walkthrough.
               </p>
               <Button href="/contact" variant="light" size="lg">

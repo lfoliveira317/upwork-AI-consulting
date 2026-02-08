@@ -4,41 +4,42 @@ import { company, navigation } from "../data/siteData";
 
 export default function Footer() {
   return (
-    <footer style={{ backgroundColor: "#0f172a", color: "#94a3b8" }}>
+    <footer style={{ backgroundColor: "#020617", color: "#94a3b8" }}>
+      {/* Top accent line */}
+      <div style={{ height: 2, background: "linear-gradient(90deg, transparent, #2563eb, #7c3aed, #2563eb, transparent)" }} />
+
       <Container className="py-5">
         <Row className="g-4">
           {/* Brand */}
           <Col lg={4}>
             <div className="d-flex align-items-center gap-2 mb-3">
               <span
-                className="d-flex align-items-center justify-content-center rounded-2"
+                className="d-flex align-items-center justify-content-center"
                 style={{
-                  width: 32,
-                  height: 32,
-                  background: "linear-gradient(135deg, #2563eb, #1e3a5f)",
+                  width: 36,
+                  height: 36,
+                  background: "linear-gradient(135deg, #2563eb, #7c3aed)",
                   color: "#fff",
-                  fontSize: "0.85rem",
+                  fontSize: "0.9rem",
                   fontWeight: 700,
+                  borderRadius: 10,
                 }}
               >
                 A
               </span>
-              <span className="fw-bold text-white" style={{ fontSize: "1.1rem" }}>
+              <span className="fw-bold text-white" style={{ fontSize: "1.15rem", letterSpacing: "-0.02em" }}>
                 {company.name}
               </span>
             </div>
-            <p className="small mb-3" style={{ maxWidth: 320, lineHeight: 1.7 }}>
+            <p className="small mb-4" style={{ maxWidth: 320, lineHeight: 1.8 }}>
               {company.description}
             </p>
-            <div className="d-flex gap-3">
+            <div className="d-flex gap-2">
               {Object.entries(company.social).map(([platform, url]) => (
                 <a
                   key={platform}
                   href={url}
-                  className="text-secondary"
-                  style={{ fontSize: "1.1rem", transition: "color 0.15s" }}
-                  onMouseEnter={(e) => (e.currentTarget.style.color = "#fff")}
-                  onMouseLeave={(e) => (e.currentTarget.style.color = "")}
+                  className="social-icon text-decoration-none"
                 >
                   <i className={`bi bi-${platform}`}></i>
                 </a>
@@ -56,10 +57,7 @@ export default function Footer() {
                 <li key={item.href}>
                   <Link
                     to={item.href}
-                    className="text-decoration-none text-secondary small"
-                    style={{ transition: "color 0.15s" }}
-                    onMouseEnter={(e) => (e.currentTarget.style.color = "#fff")}
-                    onMouseLeave={(e) => (e.currentTarget.style.color = "")}
+                    className="text-decoration-none text-secondary small footer-link"
                   >
                     {item.name}
                   </Link>
@@ -78,10 +76,7 @@ export default function Footer() {
                 <li key={s}>
                   <Link
                     to="/services"
-                    className="text-decoration-none text-secondary small"
-                    style={{ transition: "color 0.15s" }}
-                    onMouseEnter={(e) => (e.currentTarget.style.color = "#fff")}
-                    onMouseLeave={(e) => (e.currentTarget.style.color = "")}
+                    className="text-decoration-none text-secondary small footer-link"
                   >
                     {s}
                   </Link>

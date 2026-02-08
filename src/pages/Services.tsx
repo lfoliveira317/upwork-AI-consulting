@@ -20,19 +20,19 @@ export default function Services() {
             subtitle="Each service is backed by deep expertise and proven methodologies"
           />
           <Row className="g-4">
-            {services.map((service) => (
+            {services.map((service, i) => (
               <Col md={6} lg={4} key={service.id}>
-                <Card className="h-100 border-0 shadow-sm card-lift" style={{ borderRadius: 12 }}>
+                <Card className={`h-100 border-0 shadow-sm card-glow animate-fade-in-up delay-${(i % 3) + 1}`}>
                   <Card.Body className="p-4">
                     <div className="icon-box mb-3">
                       <i className={`bi ${service.icon} fs-4`}></i>
                     </div>
-                    <h5 className="fw-semibold mb-2">{service.title}</h5>
-                    <p className="text-secondary small mb-3">{service.description}</p>
+                    <h5 className="fw-semibold mb-2" style={{ letterSpacing: "-0.02em" }}>{service.title}</h5>
+                    <p className="text-secondary small mb-3" style={{ lineHeight: 1.7 }}>{service.description}</p>
                     <ul className="list-unstyled mb-0">
                       {service.features.map((feature) => (
                         <li key={feature} className="d-flex align-items-center gap-2 small text-secondary mb-2">
-                          <i className="bi bi-check2 text-primary"></i>
+                          <i className="bi bi-check-circle-fill" style={{ color: "var(--color-primary)", fontSize: "0.7rem" }}></i>
                           {feature}
                         </li>
                       ))}
@@ -83,11 +83,11 @@ export default function Services() {
               },
             ].map((phase) => (
               <Col md={6} lg={3} key={phase.step}>
-                <div className="position-relative p-4">
+                <div className="feature-card position-relative">
                   <span className="step-number">{phase.step}</span>
                   <div className="position-relative" style={{ zIndex: 1 }}>
-                    <h5 className="fw-semibold mb-2 mt-4">{phase.title}</h5>
-                    <p className="text-secondary small mb-0">{phase.description}</p>
+                    <h5 className="fw-semibold mb-2 mt-4" style={{ letterSpacing: "-0.02em" }}>{phase.title}</h5>
+                    <p className="text-secondary small mb-0" style={{ lineHeight: 1.7 }}>{phase.description}</p>
                   </div>
                 </div>
               </Col>
@@ -97,14 +97,15 @@ export default function Services() {
       </section>
 
       {/* ─── CTA ────────────────────────────────────────── */}
-      <section className="hero-gradient grid-pattern text-white py-5">
+      <section className="hero-gradient grid-pattern text-white py-5 cta-section">
+        <div className="hero-orb hero-orb-2" />
         <Container className="position-relative py-4" style={{ zIndex: 1 }}>
           <Row className="justify-content-center">
             <Col lg={7} className="text-center">
-              <h2 className="fw-bold mb-3" style={{ letterSpacing: "-0.03em" }}>
-                Need a Custom AI Solution?
+              <h2 className="fw-bold mb-3" style={{ fontSize: "2rem", letterSpacing: "-0.03em" }}>
+                Need a Custom <span className="gradient-text">AI Solution</span>?
               </h2>
-              <p className="mb-4" style={{ color: "#94a3b8" }}>
+              <p className="mb-4" style={{ color: "#94a3b8", lineHeight: 1.8 }}>
                 Tell us about your challenge and we'll design the right approach.
               </p>
               <Button href="/contact" variant="light" size="lg">

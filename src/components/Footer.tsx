@@ -6,7 +6,7 @@ export default function Footer() {
   return (
     <footer style={{ backgroundColor: "#020617", color: "#94a3b8" }}>
       {/* Top accent line */}
-      <div style={{ height: 2, background: "linear-gradient(90deg, transparent, #2563eb, #7c3aed, #2563eb, transparent)" }} />
+      <div style={{ height: 2, background: "linear-gradient(90deg, transparent, #00b4d8, #8b5cf6, #06d6a0, #00b4d8, transparent)" }} />
 
       <Container className="py-5">
         <Row className="g-4">
@@ -18,7 +18,7 @@ export default function Footer() {
                 style={{
                   width: 36,
                   height: 36,
-                  background: "linear-gradient(135deg, #2563eb, #7c3aed)",
+                  background: "linear-gradient(135deg, #00b4d8, #8b5cf6)",
                   color: "#fff",
                   fontSize: "0.9rem",
                   fontWeight: 700,

@@ -72,7 +72,7 @@ export default function Home() {
 
               {/* Trusted by logos placeholder */}
               <div className="mt-5 pt-4 animate-fade-in-up delay-5">
-                <p className="text-uppercase small mb-3" style={{ color: "#475569", letterSpacing: "0.1em", fontSize: "0.7rem" }}>
+                <p className="text-uppercase small mb-3" style={{ color: "#3b5570", letterSpacing: "0.1em", fontSize: "0.7rem" }}>
                   Trusted by innovative companies
                 </p>
                 <div className="d-flex justify-content-center align-items-center gap-4 flex-wrap" style={{ opacity: 0.4 }}>

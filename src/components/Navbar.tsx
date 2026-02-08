@@ -37,12 +37,12 @@ export default function Navbar() {
             style={{
               width: 36,
               height: 36,
-              background: "linear-gradient(135deg, #0f172a, #2563eb)",
+              background: "linear-gradient(135deg, #0b1120, #00b4d8)",
               color: "#fff",
               fontSize: "0.9rem",
               fontWeight: 700,
               borderRadius: 10,
-              boxShadow: "0 2px 8px rgba(15, 23, 42, 0.2)",
+              boxShadow: "0 2px 12px rgba(0, 180, 216, 0.3)",
             }}
           >
             A
@@ -80,7 +80,7 @@ export default function Navbar() {
                   }`}
                   style={{
                     fontSize: "0.9rem",
-                    backgroundColor: pathname === item.href ? "#f1f5f9" : "transparent",
+                    backgroundColor: pathname === item.href ? "#e0f7fa" : "transparent",
                   }}
                 >
                   {item.name}

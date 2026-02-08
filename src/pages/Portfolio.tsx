@@ -13,7 +13,7 @@ export default function Portfolio() {
       />
 
       {/* ─── Stats ──────────────────────────────────────── */}
-      <section className="py-5" style={{ backgroundColor: "#fff", borderBottom: "1px solid #e5e7eb" }}>
+      <section className="py-5" style={{ backgroundColor: "var(--color-surface)", borderBottom: "1px solid rgba(255,255,255,0.04)" }}>
         <Container>
           <Row className="g-4">
             {stats.map((stat) => (
@@ -38,18 +38,18 @@ export default function Portfolio() {
           <Row className="g-4">
             {portfolio.map((project, i) => (
               <Col md={6} key={project.id}>
-                <Card className={`h-100 border-0 shadow-sm card-glow animate-fade-in-up delay-${(i % 2) + 1}`}>
+                <Card className={`h-100 border-0 card-glow animate-fade-in-up delay-${(i % 2) + 1}`} style={{ background: "var(--color-surface-elevated)" }}>
                   <Card.Body className="p-4">
                     <div className="d-flex justify-content-between align-items-start mb-3">
                       <Badge bg="light" text="dark">
                         {project.industry}
                       </Badge>
-                      <span className="text-secondary" style={{ fontSize: "0.75rem" }}>
+                      <span style={{ fontSize: "0.75rem", color: "var(--color-text-muted)" }}>
                         {project.client}
                       </span>
                     </div>
-                    <h4 className="fw-semibold mb-2" style={{ letterSpacing: "-0.02em" }}>{project.title}</h4>
-                    <p className="text-secondary mb-3" style={{ lineHeight: 1.7 }}>{project.description}</p>
+                    <h4 className="fw-semibold mb-2" style={{ letterSpacing: "-0.02em", color: "var(--color-text)" }}>{project.title}</h4>
+                    <p className="mb-3" style={{ lineHeight: 1.7, color: "var(--color-text-muted)" }}>{project.description}</p>
 
                     {/* Metrics */}
                     <div className="d-flex flex-wrap gap-2 mb-3">

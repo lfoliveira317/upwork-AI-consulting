@@ -22,14 +22,14 @@ export default function Team() {
           <Row className="g-4">
             {team.map((member, i) => (
               <Col md={6} lg={4} key={member.name}>
-                <Card className={`h-100 border-0 shadow-sm card-glow text-center animate-fade-in-up delay-${(i % 3) + 1}`}>
+                <Card className={`h-100 border-0 card-glow text-center animate-fade-in-up delay-${(i % 3) + 1}`} style={{ background: "var(--color-surface-elevated)" }}>
                   <Card.Body className="p-4">
                     <div className="team-avatar mx-auto mb-3">
                       <i className={`bi ${member.icon}`} style={{ fontSize: "2rem" }}></i>
                     </div>
-                    <h5 className="fw-semibold mb-1" style={{ letterSpacing: "-0.02em" }}>{member.name}</h5>
+                    <h5 className="fw-semibold mb-1" style={{ letterSpacing: "-0.02em", color: "var(--color-text)" }}>{member.name}</h5>
                     <p className="small fw-medium mb-3" style={{ color: "var(--color-primary)" }}>{member.role}</p>
-                    <p className="text-secondary small mb-0" style={{ lineHeight: 1.8 }}>
+                    <p className="small mb-0" style={{ lineHeight: 1.8, color: "var(--color-text-muted)" }}>
                       {member.bio}
                     </p>
                   </Card.Body>
@@ -78,8 +78,8 @@ export default function Team() {
                   <div className="icon-box mx-auto mb-3">
                     <i className={`bi ${value.icon} fs-4`}></i>
                   </div>
-                  <h6 className="fw-semibold mb-2">{value.title}</h6>
-                  <p className="text-secondary small mb-0" style={{ lineHeight: 1.7 }}>{value.description}</p>
+                  <h6 className="fw-semibold mb-2" style={{ color: "var(--color-text)" }}>{value.title}</h6>
+                  <p className="small mb-0" style={{ lineHeight: 1.7, color: "var(--color-text-muted)" }}>{value.description}</p>
                 </div>
               </Col>
             ))}

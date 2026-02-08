@@ -72,7 +72,7 @@ export default function Home() {
 
               {/* Trusted by logos placeholder */}
               <div className="mt-5 pt-4 animate-fade-in-up delay-5">
-                <p className="text-uppercase small mb-3" style={{ color: "#3b5570", letterSpacing: "0.1em", fontSize: "0.7rem" }}>
+                <p className="text-uppercase small mb-3" style={{ color: "#4a5568", letterSpacing: "0.1em", fontSize: "0.7rem" }}>
                   Trusted by innovative companies
                 </p>
                 <div className="d-flex justify-content-center align-items-center gap-4 flex-wrap" style={{ opacity: 0.4 }}>
@@ -89,7 +89,7 @@ export default function Home() {
       </section>
 
       {/* ─── Stats ─────────────────────────────────────── */}
-      <section className="py-5" style={{ backgroundColor: "#fff", borderBottom: "1px solid #e5e7eb" }}>
+      <section className="py-5" style={{ backgroundColor: "var(--color-surface)", borderBottom: "1px solid rgba(255,255,255,0.04)" }}>
         <Container>
           <Row className="g-4">
             {stats.map((stat, i) => (
@@ -114,16 +114,16 @@ export default function Home() {
           <Row className="g-4">
             {services.slice(0, 3).map((service, i) => (
               <Col md={4} key={service.id}>
-                <Card className="h-100 border-0 shadow-sm card-glow">
+                <Card className="h-100 border-0 card-glow" style={{ background: "var(--color-surface-elevated)" }}>
                   <Card.Body className="p-4">
                     <div className="icon-box mb-3">
                       <i className={`bi ${service.icon} fs-4`}></i>
                     </div>
-                    <h5 className="fw-semibold mb-2" style={{ letterSpacing: "-0.02em" }}>{service.title}</h5>
-                    <p className="text-secondary small mb-3" style={{ lineHeight: 1.7 }}>{service.description}</p>
+                    <h5 className="fw-semibold mb-2" style={{ letterSpacing: "-0.02em", color: "var(--color-text)" }}>{service.title}</h5>
+                    <p className="small mb-3" style={{ lineHeight: 1.7, color: "var(--color-text-muted)" }}>{service.description}</p>
                     <ul className="list-unstyled mb-0">
                       {service.features.slice(0, 2).map((f) => (
-                        <li key={f} className="d-flex align-items-center gap-2 small text-secondary mb-1">
+                        <li key={f} className="d-flex align-items-center gap-2 small mb-1" style={{ color: "var(--color-text-muted)" }}>
                           <i className="bi bi-check-circle-fill" style={{ color: "var(--color-primary)", fontSize: "0.7rem" }}></i> {f}
                         </li>
                       ))}
@@ -154,18 +154,18 @@ export default function Home() {
           <Row className="g-4">
             {portfolio.slice(0, 2).map((project) => (
               <Col md={6} key={project.id}>
-                <Card className="h-100 border-0 shadow-sm card-glow">
+                <Card className="h-100 border-0 card-glow" style={{ background: "var(--color-surface-elevated)" }}>
                   <Card.Body className="p-4">
                     <div className="d-flex justify-content-between align-items-start mb-3">
                       <Badge bg="light" text="dark">
                         {project.industry}
                       </Badge>
-                      <span className="text-secondary" style={{ fontSize: "0.75rem" }}>
+                      <span style={{ fontSize: "0.75rem", color: "var(--color-text-muted)" }}>
                         {project.client}
                       </span>
                     </div>
-                    <h5 className="fw-semibold mb-2" style={{ letterSpacing: "-0.02em" }}>{project.title}</h5>
-                    <p className="text-secondary small mb-3" style={{ lineHeight: 1.7 }}>{project.description}</p>
+                    <h5 className="fw-semibold mb-2" style={{ letterSpacing: "-0.02em", color: "var(--color-text)" }}>{project.title}</h5>
+                    <p className="small mb-3" style={{ lineHeight: 1.7, color: "var(--color-text-muted)" }}>{project.description}</p>
                     <div className="d-flex flex-wrap gap-2">
                       {project.metrics.map((m) => (
                         <span key={m} className="metric-tag">
@@ -199,7 +199,7 @@ export default function Home() {
           <Row className="g-4">
             {products.slice(0, 3).map((product) => (
               <Col md={4} key={product.id}>
-                <Card className="h-100 border-0 shadow-sm card-glow">
+                <Card className="h-100 border-0 card-glow" style={{ background: "var(--color-surface-elevated)" }}>
                   <Card.Body className="p-4">
                     <div className="d-flex justify-content-between align-items-start mb-3">
                       <div className="icon-box">
@@ -209,8 +209,8 @@ export default function Home() {
                         {product.status}
                       </Badge>
                     </div>
-                    <h5 className="fw-semibold mb-2" style={{ letterSpacing: "-0.02em" }}>{product.name}</h5>
-                    <p className="text-secondary small mb-0" style={{ lineHeight: 1.7 }}>{product.description}</p>
+                    <h5 className="fw-semibold mb-2" style={{ letterSpacing: "-0.02em", color: "var(--color-text)" }}>{product.name}</h5>
+                    <p className="small mb-0" style={{ lineHeight: 1.7, color: "var(--color-text-muted)" }}>{product.description}</p>
                   </Card.Body>
                 </Card>
               </Col>

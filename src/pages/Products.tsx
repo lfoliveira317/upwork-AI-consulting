@@ -22,7 +22,7 @@ export default function Products() {
           <Row className="g-4">
             {products.map((product, i) => (
               <Col md={6} key={product.id}>
-                <Card className={`h-100 border-0 shadow-sm card-glow animate-fade-in-up delay-${(i % 2) + 1}`}>
+                <Card className={`h-100 border-0 card-glow animate-fade-in-up delay-${(i % 2) + 1}`} style={{ background: "var(--color-surface-elevated)" }}>
                   <Card.Body className="p-4">
                     <div className="d-flex justify-content-between align-items-start mb-3">
                       <div className="icon-box">
@@ -32,8 +32,8 @@ export default function Products() {
                         {product.status}
                       </Badge>
                     </div>
-                    <h4 className="fw-semibold mb-2" style={{ letterSpacing: "-0.02em" }}>{product.name}</h4>
-                    <p className="text-secondary mb-3" style={{ lineHeight: 1.7 }}>{product.description}</p>
+                    <h4 className="fw-semibold mb-2" style={{ letterSpacing: "-0.02em", color: "var(--color-text)" }}>{product.name}</h4>
+                    <p className="mb-3" style={{ lineHeight: 1.7, color: "var(--color-text-muted)" }}>{product.description}</p>
                     <div className="d-flex flex-wrap gap-2">
                       {product.tags.map((tag) => (
                         <span key={tag} className="tag">
@@ -87,8 +87,8 @@ export default function Products() {
                   <div className="icon-box mx-auto mb-3">
                     <i className={`bi ${feature.icon} fs-4`}></i>
                   </div>
-                  <h6 className="fw-semibold mb-2">{feature.title}</h6>
-                  <p className="text-secondary small mb-0" style={{ lineHeight: 1.7 }}>{feature.description}</p>
+                  <h6 className="fw-semibold mb-2" style={{ color: "var(--color-text)" }}>{feature.title}</h6>
+                  <p className="small mb-0" style={{ lineHeight: 1.7, color: "var(--color-text-muted)" }}>{feature.description}</p>
                 </div>
               </Col>
             ))}

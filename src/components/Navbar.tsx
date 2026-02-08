@@ -20,8 +20,8 @@ export default function Navbar() {
       expand="lg"
       className={`py-2 animate-fade-in-down ${scrolled ? "shadow-sm" : ""}`}
       style={{
-        backgroundColor: scrolled ? "rgba(255,255,255,0.95)" : "rgba(255,255,255,0.85)",
-        borderBottom: scrolled ? "1px solid #e2e8f0" : "1px solid transparent",
+        backgroundColor: scrolled ? "rgba(8, 12, 20, 0.95)" : "rgba(8, 12, 20, 0.6)",
+        borderBottom: scrolled ? "1px solid rgba(255,255,255,0.06)" : "1px solid transparent",
         transition: "all 0.3s ease",
       }}
     >
@@ -30,19 +30,19 @@ export default function Navbar() {
           as={Link}
           to="/"
           className="fw-bold d-flex align-items-center gap-2"
-          style={{ color: "#0f172a", letterSpacing: "-0.03em", fontSize: "1.15rem" }}
+          style={{ color: "#e2e8f0", letterSpacing: "-0.03em", fontSize: "1.15rem" }}
         >
           <span
             className="d-flex align-items-center justify-content-center"
             style={{
               width: 36,
               height: 36,
-              background: "linear-gradient(135deg, #0b1120, #00b4d8)",
+              background: "linear-gradient(135deg, #0ea5e9, #8b5cf6)",
               color: "#fff",
               fontSize: "0.9rem",
               fontWeight: 700,
               borderRadius: 10,
-              boxShadow: "0 2px 12px rgba(0, 180, 216, 0.3)",
+              boxShadow: "0 2px 12px rgba(14, 165, 233, 0.3)",
             }}
           >
             A
@@ -61,11 +61,13 @@ export default function Navbar() {
           placement="end"
           show={showMenu}
           onHide={() => setShowMenu(false)}
+          data-bs-theme="dark"
+          style={{ backgroundColor: "#0d1117" }}
         >
-          <Offcanvas.Header closeButton>
-            <Offcanvas.Title className="fw-bold">{company.name}</Offcanvas.Title>
+          <Offcanvas.Header closeButton className="border-0" data-bs-theme="dark">
+            <Offcanvas.Title className="fw-bold text-white">{company.name}</Offcanvas.Title>
           </Offcanvas.Header>
-          <Offcanvas.Body>
+          <Offcanvas.Body className="" style={{ backgroundColor: "#0d1117" }}>
             <Nav className="ms-auto align-items-lg-center gap-lg-1">
               {navigation.map((item) => (
                 <Nav.Link
@@ -75,12 +77,13 @@ export default function Navbar() {
                   onClick={() => setShowMenu(false)}
                   className={`px-3 py-2 rounded-2 ${
                     pathname === item.href
-                      ? "fw-semibold"
-                      : "text-secondary"
+                      ? "fw-semibold text-white"
+                      : ""
                   }`}
                   style={{
                     fontSize: "0.9rem",
-                    backgroundColor: pathname === item.href ? "#e0f7fa" : "transparent",
+                    backgroundColor: pathname === item.href ? "rgba(14, 165, 233, 0.1)" : "transparent",
+                    color: pathname === item.href ? "#38bdf8" : "#8892a4",
                   }}
                 >
                   {item.name}

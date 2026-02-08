@@ -4,9 +4,9 @@ import { company, navigation } from "../data/siteData";
 
 export default function Footer() {
   return (
-    <footer style={{ backgroundColor: "#020617", color: "#94a3b8" }}>
+    <footer style={{ backgroundColor: "#040609", color: "#64748b" }}>
       {/* Top accent line */}
-      <div style={{ height: 2, background: "linear-gradient(90deg, transparent, #00b4d8, #8b5cf6, #06d6a0, #00b4d8, transparent)" }} />
+      <div style={{ height: 1, background: "linear-gradient(90deg, transparent, #0ea5e9, #8b5cf6, #0ea5e9, transparent)" }} />
 
       <Container className="py-5">
         <Row className="g-4">
@@ -18,7 +18,7 @@ export default function Footer() {
                 style={{
                   width: 36,
                   height: 36,
-                  background: "linear-gradient(135deg, #00b4d8, #8b5cf6)",
+                  background: "linear-gradient(135deg, #0ea5e9, #8b5cf6)",
                   color: "#fff",
                   fontSize: "0.9rem",
                   fontWeight: 700,
@@ -110,7 +110,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div
           className="mt-5 pt-4 d-flex flex-column flex-sm-row justify-content-between align-items-center gap-2"
-          style={{ borderTop: "1px solid #1e293b" }}
+          style={{ borderTop: "1px solid rgba(255, 255, 255, 0.04)" }}
         >
           <p className="small mb-0">
             &copy; {new Date().getFullYear()} {company.name}. All rights reserved.

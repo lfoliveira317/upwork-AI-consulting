@@ -22,16 +22,16 @@ export default function Services() {
           <Row className="g-4">
             {services.map((service, i) => (
               <Col md={6} lg={4} key={service.id}>
-                <Card className={`h-100 border-0 shadow-sm card-glow animate-fade-in-up delay-${(i % 3) + 1}`}>
+                <Card className={`h-100 border-0 card-glow animate-fade-in-up delay-${(i % 3) + 1}`} style={{ background: "var(--color-surface-elevated)" }}>
                   <Card.Body className="p-4">
                     <div className="icon-box mb-3">
                       <i className={`bi ${service.icon} fs-4`}></i>
                     </div>
-                    <h5 className="fw-semibold mb-2" style={{ letterSpacing: "-0.02em" }}>{service.title}</h5>
-                    <p className="text-secondary small mb-3" style={{ lineHeight: 1.7 }}>{service.description}</p>
+                    <h5 className="fw-semibold mb-2" style={{ letterSpacing: "-0.02em", color: "var(--color-text)" }}>{service.title}</h5>
+                    <p className="small mb-3" style={{ lineHeight: 1.7, color: "var(--color-text-muted)" }}>{service.description}</p>
                     <ul className="list-unstyled mb-0">
                       {service.features.map((feature) => (
-                        <li key={feature} className="d-flex align-items-center gap-2 small text-secondary mb-2">
+                        <li key={feature} className="d-flex align-items-center gap-2 small mb-2" style={{ color: "var(--color-text-muted)" }}>
                           <i className="bi bi-check-circle-fill" style={{ color: "var(--color-primary)", fontSize: "0.7rem" }}></i>
                           {feature}
                         </li>

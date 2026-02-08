@@ -17,11 +17,11 @@ export function SectionHeader({
       <span className="section-label mb-3">
         {label}
       </span>
-      <h2 className="fw-bold mb-2" style={{ letterSpacing: "-0.03em", fontSize: "2rem" }}>
+      <h2 className="fw-bold mb-2" style={{ letterSpacing: "-0.03em", fontSize: "2rem", color: "var(--color-text)" }}>
         {title}
       </h2>
       {subtitle && (
-        <p className="text-secondary" style={{ fontSize: "1.05rem", lineHeight: 1.8 }}>
+        <p style={{ fontSize: "1.05rem", lineHeight: 1.8, color: "var(--color-text-muted)" }}>
           {subtitle}
         </p>
       )}
@@ -67,7 +67,7 @@ export function PageHero({
             <h1 className="fw-bold mb-3 animate-fade-in-up delay-1 glow-text" style={{ fontSize: "3rem", letterSpacing: "-0.03em" }}>
               {title}
             </h1>
-            <p className="mb-0 animate-fade-in-up delay-2" style={{ color: "#94a3b8", fontSize: "1.15rem", lineHeight: 1.8 }}>
+            <p className="mb-0 animate-fade-in-up delay-2" style={{ color: "#64748b", fontSize: "1.15rem", lineHeight: 1.8 }}>
               {subtitle}
             </p>
           </div>
@@ -105,7 +105,7 @@ export function StatCard({ value, label }: { value: string; label: string }) {
       <div className="stat-number fw-bold mb-1" style={{ fontSize: "2.5rem", letterSpacing: "-0.03em" }}>
         {value}
       </div>
-      <div className="text-secondary" style={{ fontSize: "0.85rem", fontWeight: 500 }}>
+      <div style={{ fontSize: "0.85rem", fontWeight: 500, color: "var(--color-text-muted)" }}>
         {label}
       </div>
     </div>
